@@ -1,23 +1,30 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Image } from "react-native";
 
-const Test = () => (
-    <View style={styles.container} >
-        <View style={styles.box1} />
-        <View style={styles.box2} />
-        <View style={styles.box3} />
+export const Test = () => {
+  return (
+    <View style={styles.container}>
+      <Image
+        source={require('../assets/images/dog.jpg')}
+        style={styles.image}
+        resizeMode="contain" // mantém proporção dentro do espaço
+      />
     </View>
-);
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-    },
-    box1: {width: 50, height: 50, backgroundColor: 'red'},
-    box2: {width: 50, height: 50, backgroundColor: 'red'},
-    box3: {width: 50, height: 50, backgroundColor: 'red'},
+  container: {
+    flex: 1, 
+    justifyContent: 'center', // centraliza verticalmente
+    alignItems: 'center',     // centraliza horizontalmente
+    backgroundColor: '#f0f0f0',
+  },
+  image: {
+    width: 400,
+    height: 300,              // define altura fixa
+    borderRadius: 10,         // arredonda cantos
+  },
 });
 
 export default Test;
+

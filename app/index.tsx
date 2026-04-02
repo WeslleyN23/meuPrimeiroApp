@@ -1,7 +1,11 @@
-import { Button, Text, TextInput, View } from "react-native";
+
+import { Button, Text, TextInput, View, StyleSheet } from "react-native";
 import { Test } from "../components/Test";
+import { useFonts } from "expo-font";
 
 const App = () => (
+
+  <>
   <View>
     <TextInput 
       placeholder="Digite o seu nome"
@@ -13,14 +17,38 @@ const App = () => (
         textAlign: 'center'
       }}
     />
+  </View>
+  <View>
     <Button 
       title="Enviar"
       onPress={() => alert('Olá, Mundo!')}
       />
   </View>
+  </>
 )
 
 export default function Index() {
+   const [fontsLoaded] = useFonts({
+        'CustomFont': require('../assets/fonts/MinhaFonte.ttf'),
+    });
+
+    if (!fontsLoaded) {
+        return <View><Text>Carregando...</Text></View>
+    }
+
+    const styles = StyleSheet.create({
+      container: {
+          flex: 1, // Faz o componente ocupar toda a tela
+          justifyContent: 'center', // Centraliza verticalmente
+          alignItems: 'center', // Centraliza horizontalmente
+          backgroundColor: '#f0f0f0', // Cor de fundo clara para destaque
+      },
+      text: {
+          fontFamily: 'CustomFont',
+          fontSize: 60, // Aumenta o tamanho da fonte
+          color: '#333', // Define uma cor para o texto
+      },
+  });
   return (
     <View
       style={{
@@ -29,9 +57,11 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Bem-vindo(a) ao React Native.</Text>
+      <Text 
+        style={styles.text}>Bem-vindo(a) ao React Native.</Text>
       <Test />
       <App />
     </View>
   );
 }
+
