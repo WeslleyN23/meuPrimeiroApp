@@ -2,6 +2,7 @@
 import { Button, Text, TextInput, View, StyleSheet } from "react-native";
 import { Test } from "../components/Test";
 import { useFonts } from "expo-font";
+import Localizacao from "../components/Localizacao/index";
 
 const App = () => (
 
@@ -21,7 +22,7 @@ const App = () => (
   <View>
     <Button 
       title="Enviar"
-      onPress={() => alert('Olá, Mundo!')}
+      onPress={() => alert('Olá, ')}
       />
   </View>
   </>
@@ -61,6 +62,9 @@ export default function Index() {
         style={styles.text}>Bem-vindo(a) ao React Native.</Text>
       <Test />
       <App />
+      <p>
+      <Localizacao />
+      </p>
     </View>
   );
 }
